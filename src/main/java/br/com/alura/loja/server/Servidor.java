@@ -13,9 +13,7 @@ public class Servidor {
 		
 		//rodando servidor com suporte jax-rs 
 		
-		ResourceConfig config = new ResourceConfig().packages("br.com.alura.loja"); //configuracao dos meus recursos
-		URI uri = URI.create("http://localhost:8080/");
-		HttpServer server = GrizzlyHttpServerFactory.createHttpServer(uri, config);
+		HttpServer server = inicializaServidor();
 		
 		System.out.println("Servidor rodando");
 		
@@ -23,7 +21,13 @@ public class Servidor {
 		
 		server.stop();
 		
-		
+		}
+	
+	public static HttpServer inicializaServidor() {
+		ResourceConfig config = new ResourceConfig().packages("br.com.alura.loja"); //configuracao dos meus recursos
+		URI uri = URI.create("http://localhost:8080/");
+		HttpServer server = GrizzlyHttpServerFactory.createHttpServer(uri, config);
+		return server;
 	}
 
 }
